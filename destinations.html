@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Destinations - Solitude Travels</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background: #ffffff;
+      }
+
+      /* Navigation */
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 1.5rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 3rem;
+      }
+
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        text-decoration: none;
+        letter-spacing: -0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 3rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #1a1a1a;
+        font-weight: 400;
+        font-size: 0.95rem;
+        letter-spacing: 0.3px;
+        transition: color 0.3s ease;
+        text-transform: uppercase;
+      }
+
+      .nav-links a:hover {
+        color: #666;
+      }
+
+      /* Destinations Section */
+      .destinations-section {
+        margin-top: 120px;
+        padding: 4rem 0;
+      }
+
+      .destinations-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 3rem;
+      }
+
+      .destinations-header {
+        margin-bottom: 6rem;
+      }
+
+      .destinations-header .breadcrumb {
+        font-size: 0.9rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+      }
+
+      .destinations-header h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 4rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        letter-spacing: -2px;
+        margin-bottom: 2rem;
+      }
+
+      .destinations-header p {
+        font-size: 1.3rem;
+        color: #666;
+        max-width: 800px;
+        font-weight: 300;
+        line-height: 1.7;
+      }
+
+      .destination {
+        margin-bottom: 8rem;
+        scroll-margin-top: 120px;
+      }
+
+      .destination-content {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 6rem;
+        align-items: start;
+        margin-bottom: 4rem;
+      }
+
+      .destination:nth-child(even) .destination-content {
+        direction: rtl;
+      }
+
+      .destination:nth-child(even) .destination-content > * {
+        direction: ltr;
+      }
+
+      .destination-image {
+        overflow: hidden;
+      }
+
+      .destination-image img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+      }
+
+      .destination-info h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        color: #1a1a1a;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        letter-spacing: -1px;
+      }
+
+      .destination-info .location {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .destination-info p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 2rem;
+        font-weight: 300;
+        line-height: 1.8;
+      }
+
+      .price-section {
+        background: #f8f8f8;
+        padding: 2rem;
+        margin: 2rem 0;
+      }
+
+      .price-section h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        color: #1a1a1a;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .price {
+        font-size: 2rem;
+        color: #1a1a1a;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .price-note {
+        font-size: 0.9rem;
+        color: #666;
+        font-weight: 300;
+      }
+
+      .itinerary-section {
+        margin-top: 3rem;
+      }
+
+      .itinerary-section h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        color: #1a1a1a;
+        margin-bottom: 2rem;
+        font-weight: 600;
+      }
+
+      .itinerary-day {
+        border-left: 2px solid #e0e0e0;
+        padding-left: 2rem;
+        margin-bottom: 2rem;
+        position: relative;
+      }
+
+      .itinerary-day::before {
+        content: "";
+        position: absolute;
+        left: -6px;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        background: #1a1a1a;
+        border-radius: 50%;
+      }
+
+      .day-number {
+        font-size: 0.9rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .day-title {
+        font-size: 1.2rem;
+        color: #1a1a1a;
+        margin-bottom: 0.8rem;
+        font-weight: 600;
+      }
+
+      .day-description {
+        color: #666;
+        font-weight: 300;
+        line-height: 1.7;
+      }
+
+      .book-btn {
+        background: #1a1a1a;
+        color: white;
+        border: none;
+        padding: 1.2rem 3rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 2rem;
+      }
+
+      .book-btn:hover {
+        background: #333;
+      }
+
+      .highlights {
+        margin: 2rem 0;
+      }
+
+      .highlights h4 {
+        font-size: 1rem;
+        color: #1a1a1a;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .highlights ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .highlights li {
+        color: #666;
+        margin-bottom: 0.5rem;
+        font-weight: 300;
+        position: relative;
+        padding-left: 1rem;
+      }
+
+      .highlights li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #1a1a1a;
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 1024px) {
+        .destination-content {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+
+        .destination:nth-child(even) .destination-content {
+          direction: ltr;
+        }
+
+        .destinations-header h1 {
+          font-size: 3rem;
+        }
+
+        .destination-info h2 {
+          font-size: 2.2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .nav-container,
+        .destinations-container {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+
+        .destinations-header h1 {
+          font-size: 2.5rem;
+        }
+
+        .destination-info h2 {
+          font-size: 2rem;
+        }
+
+        .destination {
+          margin-bottom: 6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">Odyssey</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="index.html#services">Services</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Destinations Section -->
+    <section class="destinations-section">
+      <div class="destinations-container">
+        <div class="destinations-header">
+          <div class="breadcrumb">DESTINATIONS</div>
+          <h1>Extraordinary Journeys</h1>
+          <p>
+            Discover our carefully curated collection of transformative travel
+            experiences. Each destination offers unique opportunities for
+            cultural immersion, natural wonder, and personal discovery.
+          </p>
+        </div>
+
+        <!-- Santorini -->
+        <div class="destination" id="santorini">
+          <div class="destination-content">
+            <div class="destination-image">
+              <img src="images/santorini.jpg" alt="Santorini, Greece" />
+            </div>
+            <div class="destination-info">
+              <h2>Santorini</h2>
+              <div class="location">Cyclades, Greece</div>
+              <p>
+                Experience the magic of Santorini's dramatic volcanic landscape,
+                where whitewashed villages perch on clifftops above the azure
+                Aegean Sea. This exclusive journey combines luxury
+                accommodations with authentic local experiences.
+              </p>
+
+              <div class="price-section">
+                <h3>Starting Price</h3>
+                <div class="price">$4,200</div>
+                <div class="price-note">Per person, 7 days / 6 nights</div>
+              </div>
+
+              <div class="highlights">
+                <h4>Experience Highlights</h4>
+                <ul>
+                  <li>Private sunset sailing with wine tasting</li>
+                  <li>Exclusive access to traditional wineries</li>
+                  <li>Cooking class with local chef</li>
+                  <li>Archaeological site private tours</li>
+                </ul>
+              </div>
+
+              <a href="contact.html" class="book-btn">Book Now</a>
+            </div>
+          </div>
+
+          <div class="itinerary-section">
+            <h3>7-Day Itinerary</h3>
+            <div class="itinerary-day">
+              <div class="day-number">Day 1</div>
+              <div class="day-title">Arrival & Oia Exploration</div>
+              <div class="day-description">
+                Private transfer to luxury cave hotel. Evening exploration of
+                Oia village with sunset viewing from exclusive terrace.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 2</div>
+              <div class="day-title">Volcanic Discovery</div>
+              <div class="day-description">
+                Private boat tour to volcanic islands, hot springs, and secluded
+                beaches. Traditional Greek lunch on board.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 3</div>
+              <div class="day-title">Wine & Culture</div>
+              <div class="day-description">
+                Visit to three boutique wineries with tastings. Afternoon
+                cooking class featuring local specialties.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 4</div>
+              <div class="day-title">Ancient Akrotiri</div>
+              <div class="day-description">
+                Private archaeological tour of Akrotiri ruins. Afternoon at
+                leisure with spa treatments.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 5-7</div>
+              <div class="day-title">Island Immersion</div>
+              <div class="day-description">
+                Flexible days for personal exploration, beach time, and cultural
+                experiences tailored to your interests.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bali -->
+        <div class="destination" id="bali">
+          <div class="destination-content">
+            <div class="destination-image">
+              <img src="images/bali-temple.jpg" alt="Bali, Indonesia" />
+            </div>
+            <div class="destination-info">
+              <h2>Bali</h2>
+              <div class="location">Indonesia</div>
+              <p>
+                Discover the spiritual heart of Indonesia through ancient
+                temples, emerald rice terraces, and traditional villages. This
+                journey balances cultural immersion with natural beauty and
+                wellness experiences.
+              </p>
+
+              <div class="price-section">
+                <h3>Starting Price</h3>
+                <div class="price">$3,800</div>
+                <div class="price-note">Per person, 10 days / 9 nights</div>
+              </div>
+
+              <div class="highlights">
+                <h4>Experience Highlights</h4>
+                <ul>
+                  <li>Private temple ceremonies with local priests</li>
+                  <li>Traditional village homestay experience</li>
+                  <li>Sunrise trek to Mount Batur</li>
+                  <li>Balinese healing and spa rituals</li>
+                </ul>
+              </div>
+
+              <a href="contact.html" class="book-btn">Book Now</a>
+            </div>
+          </div>
+
+          <div class="itinerary-section">
+            <h3>10-Day Itinerary</h3>
+            <div class="itinerary-day">
+              <div class="day-number">Day 1-2</div>
+              <div class="day-title">Ubud Cultural Immersion</div>
+              <div class="day-description">
+                Arrival in Ubud. Traditional welcome ceremony, rice terrace
+                walks, and artisan village visits.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 3-4</div>
+              <div class="day-title">Spiritual Journey</div>
+              <div class="day-description">
+                Temple hopping with private guide, meditation sessions, and
+                traditional healing treatments.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 5-6</div>
+              <div class="day-title">Mountain Adventure</div>
+              <div class="day-description">
+                Mount Batur sunrise trek, hot springs, and coffee plantation
+                tour in the highlands.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 7-10</div>
+              <div class="day-title">Coastal Retreat</div>
+              <div class="day-description">
+                Transfer to beachfront resort. Snorkeling, traditional fishing
+                experiences, and relaxation.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Swiss Alps -->
+        <div class="destination" id="swiss-alps">
+          <div class="destination-content">
+            <div class="destination-image">
+              <img src="images/swiss-alps.jpg" alt="Swiss Alps" />
+            </div>
+            <div class="destination-info">
+              <h2>Swiss Alps</h2>
+              <div class="location">Switzerland</div>
+              <p>
+                Experience the pristine beauty of the Swiss Alps through luxury
+                mountain lodges, scenic railways, and exclusive alpine
+                experiences. Perfect for those seeking both adventure and
+                refinement.
+              </p>
+
+              <div class="price-section">
+                <h3>Starting Price</h3>
+                <div class="price">$5,500</div>
+                <div class="price-note">Per person, 8 days / 7 nights</div>
+              </div>
+
+              <div class="highlights">
+                <h4>Experience Highlights</h4>
+                <ul>
+                  <li>Private helicopter glacier tours</li>
+                  <li>Luxury mountain lodge accommodations</li>
+                  <li>Exclusive alpine hiking with guides</li>
+                  <li>Traditional Swiss cheese and chocolate experiences</li>
+                </ul>
+              </div>
+
+              <a href="contact.html" class="book-btn">Book Now</a>
+            </div>
+          </div>
+
+          <div class="itinerary-section">
+            <h3>8-Day Itinerary</h3>
+            <div class="itinerary-day">
+              <div class="day-number">Day 1-2</div>
+              <div class="day-title">Zermatt & Matterhorn</div>
+              <div class="day-description">
+                Arrival in Zermatt, luxury hotel check-in, and first glimpse of
+                the iconic Matterhorn.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 3-4</div>
+              <div class="day-title">Glacier Express Journey</div>
+              <div class="day-description">
+                Scenic railway journey through alpine landscapes to St. Moritz
+                with gourmet dining on board.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 5-6</div>
+              <div class="day-title">Jungfraujoch Adventure</div>
+              <div class="day-description">
+                Journey to "Top of Europe," ice palace visits, and alpine hiking
+                experiences.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 7-8</div>
+              <div class="day-title">Lake Geneva Finale</div>
+              <div class="day-description">
+                Relaxation by Lake Geneva, vineyard visits, and farewell dinner
+                with alpine views.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Maldives -->
+        <div class="destination" id="maldives">
+          <div class="destination-content">
+            <div class="destination-image">
+              <img src="images/maldives.jpg" alt="Maldives" />
+            </div>
+            <div class="destination-info">
+              <h2>Maldives</h2>
+              <div class="location">Indian Ocean</div>
+              <p>
+                Escape to paradise in the Maldives, where crystal-clear waters
+                meet pristine white sand beaches. Stay in overwater villas and
+                experience world-class diving and marine life.
+              </p>
+
+              <div class="price-section">
+                <h3>Starting Price</h3>
+                <div class="price">$6,800</div>
+                <div class="price-note">Per person, 7 days / 6 nights</div>
+              </div>
+
+              <div class="highlights">
+                <h4>Experience Highlights</h4>
+                <ul>
+                  <li>Overwater villa with private pool</li>
+                  <li>Private diving and snorkeling excursions</li>
+                  <li>Sunset dolphin watching cruise</li>
+                  <li>Underwater restaurant dining</li>
+                </ul>
+              </div>
+
+              <a href="contact.html" class="book-btn">Book Now</a>
+            </div>
+          </div>
+
+          <div class="itinerary-section">
+            <h3>7-Day Itinerary</h3>
+            <div class="itinerary-day">
+              <div class="day-number">Day 1</div>
+              <div class="day-title">Paradise Arrival</div>
+              <div class="day-description">
+                Seaplane transfer to resort, overwater villa check-in, and
+                welcome sunset cocktails.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 2-3</div>
+              <div class="day-title">Marine Adventures</div>
+              <div class="day-description">
+                Diving excursions to coral reefs, snorkeling with manta rays,
+                and marine biology experiences.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 4-5</div>
+              <div class="day-title">Island Exploration</div>
+              <div class="day-description">
+                Local island visits, cultural experiences, and traditional
+                Maldivian fishing.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 6-7</div>
+              <div class="day-title">Relaxation & Departure</div>
+              <div class="day-description">
+                Spa treatments, private beach dining, and leisurely departure
+                preparations.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tokyo -->
+        <div class="destination" id="tokyo">
+          <div class="destination-content">
+            <div class="destination-image">
+              <img src="images/tokyo.jpg" alt="Tokyo, Japan" />
+            </div>
+            <div class="destination-info">
+              <h2>Tokyo</h2>
+              <div class="location">Japan</div>
+              <p>
+                Immerse yourself in the fascinating contrast of ultra-modern
+                Tokyo and traditional Japanese culture. Experience exclusive
+                access to hidden temples, private tea ceremonies, and
+                world-class cuisine.
+              </p>
+
+              <div class="price-section">
+                <h3>Starting Price</h3>
+                <div class="price">$4,500</div>
+                <div class="price-note">Per person, 9 days / 8 nights</div>
+              </div>
+
+              <div class="highlights">
+                <h4>Experience Highlights</h4>
+                <ul>
+                  <li>Private sushi master class</li>
+                  <li>Exclusive temple access and ceremonies</li>
+                  <li>Traditional ryokan experience</li>
+                  <li>Michelin-starred restaurant reservations</li>
+                </ul>
+              </div>
+
+              <a href="contact.html" class="book-btn">Book Now</a>
+            </div>
+          </div>
+
+          <div class="itinerary-section">
+            <h3>9-Day Itinerary</h3>
+            <div class="itinerary-day">
+              <div class="day-number">Day 1-2</div>
+              <div class="day-title">Modern Tokyo</div>
+              <div class="day-description">
+                Arrival, luxury hotel check-in, exploration of Shibuya,
+                Harajuku, and contemporary art districts.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 3-4</div>
+              <div class="day-title">Traditional Culture</div>
+              <div class="day-description">
+                Private temple visits, tea ceremony, traditional crafts
+                workshops, and geisha district exploration.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 5-6</div>
+              <div class="day-title">Culinary Journey</div>
+              <div class="day-description">
+                Tsukiji market tour, sushi making class, sake tasting, and
+                Michelin-starred dining experiences.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 7-9</div>
+              <div class="day-title">Kyoto Extension</div>
+              <div class="day-description">
+                Day trips to Kyoto for temple visits, bamboo forests, and
+                traditional ryokan overnight experience.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Iceland -->
+        <div class="destination" id="iceland">
+          <div class="destination-content">
+            <div class="destination-image">
+              <img src="images/iceland.jpg" alt="Iceland" />
+            </div>
+            <div class="destination-info">
+              <h2>Iceland</h2>
+              <div class="location">Nordic Region</div>
+              <p>
+                Discover the raw beauty of Iceland's dramatic landscapes, from
+                powerful waterfalls to geothermal wonders. Experience the
+                Northern Lights and explore ice caves in this land of fire and
+                ice.
+              </p>
+
+              <div class="price-section">
+                <h3>Starting Price</h3>
+                <div class="price">$4,900</div>
+                <div class="price-note">Per person, 8 days / 7 nights</div>
+              </div>
+
+              <div class="highlights">
+                <h4>Experience Highlights</h4>
+                <ul>
+                  <li>Northern Lights private viewing</li>
+                  <li>Ice cave exploration with guides</li>
+                  <li>Geothermal spa experiences</li>
+                  <li>Glacier hiking adventures</li>
+                </ul>
+              </div>
+
+              <a href="contact.html" class="book-btn">Book Now</a>
+            </div>
+          </div>
+
+          <div class="itinerary-section">
+            <h3>8-Day Itinerary</h3>
+            <div class="itinerary-day">
+              <div class="day-number">Day 1-2</div>
+              <div class="day-title">Reykjavik & Golden Circle</div>
+              <div class="day-description">
+                City exploration, Golden Circle tour including Geysir, Gullfoss
+                waterfall, and Thingvellir National Park.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 3-4</div>
+              <div class="day-title">South Coast Wonders</div>
+              <div class="day-description">
+                Black sand beaches, Skógafoss and Seljalandsfoss waterfalls, and
+                glacier hiking experiences.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 5-6</div>
+              <div class="day-title">Ice & Fire</div>
+              <div class="day-description">
+                Ice cave exploration, glacier walks, and geothermal hot spring
+                relaxation.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 7-8</div>
+              <div class="day-title">Northern Lights</div>
+              <div class="day-description">
+                Northern Lights hunting, Blue Lagoon spa experience, and
+                farewell dinner in Reykjavik.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Norway Fjords -->
+        <div class="destination" id="norway">
+          <div class="destination-content">
+            <div class="destination-image">
+              <img src="images/norwayfjord.jpg" alt="Norway Fjords" />
+            </div>
+            <div class="destination-info">
+              <h2>Norway Fjords</h2>
+              <div class="location">Norway</div>
+              <p>
+                Journey through Norway's spectacular fjords, where towering
+                cliffs meet pristine waters. Experience the midnight sun,
+                traditional fishing villages, and some of the world's most
+                dramatic scenery.
+              </p>
+
+              <div class="price-section">
+                <h3>Starting Price</h3>
+                <div class="price">$5,200</div>
+                <div class="price-note">Per person, 10 days / 9 nights</div>
+              </div>
+
+              <div class="highlights">
+                <h4>Experience Highlights</h4>
+                <ul>
+                  <li>Private fjord cruise experiences</li>
+                  <li>Traditional fishing village stays</li>
+                  <li>Midnight sun photography tours</li>
+                  <li>Scenic railway journeys</li>
+                </ul>
+              </div>
+
+              <a href="contact.html" class="book-btn">Book Now</a>
+            </div>
+          </div>
+
+          <div class="itinerary-section">
+            <h3>10-Day Itinerary</h3>
+            <div class="itinerary-day">
+              <div class="day-number">Day 1-2</div>
+              <div class="day-title">Bergen Gateway</div>
+              <div class="day-description">
+                Arrival in Bergen, historic Bryggen district exploration, and
+                funicular railway to Mount Fløyen.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 3-5</div>
+              <div class="day-title">Geiranger Fjord</div>
+              <div class="day-description">
+                Scenic drive to Geiranger, fjord cruise, waterfall hikes, and
+                traditional farm visits.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 6-8</div>
+              <div class="day-title">Lofoten Islands</div>
+              <div class="day-description">
+                Flight to Lofoten, fishing village experiences, midnight sun
+                photography, and sea kayaking.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 9-10</div>
+              <div class="day-title">Oslo Culture</div>
+              <div class="day-description">
+                Return to Oslo, Viking Ship Museum, modern architecture tour,
+                and farewell dinner.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bhutan -->
+        <div class="destination" id="bhutan">
+          <div class="destination-content">
+            <div class="destination-image">
+              <img src="images/bhutan.jpg" alt="Bhutan" />
+            </div>
+            <div class="destination-info">
+              <h2>Bhutan</h2>
+              <div class="location">Himalayan Kingdom</div>
+              <p>
+                Discover the Last Shangri-La in the mystical kingdom of Bhutan.
+                Experience ancient monasteries, pristine mountain landscapes,
+                and a culture that prioritizes happiness over material wealth.
+              </p>
+
+              <div class="price-section">
+                <h3>Starting Price</h3>
+                <div class="price">$4,800</div>
+                <div class="price-note">Per person, 12 days / 11 nights</div>
+              </div>
+
+              <div class="highlights">
+                <h4>Experience Highlights</h4>
+                <ul>
+                  <li>Tiger's Nest Monastery trek</li>
+                  <li>Private audience with monks</li>
+                  <li>Traditional archery experiences</li>
+                  <li>Himalayan mountain views</li>
+                </ul>
+              </div>
+
+              <a href="contact.html" class="book-btn">Book Now</a>
+            </div>
+          </div>
+
+          <div class="itinerary-section">
+            <h3>12-Day Itinerary</h3>
+            <div class="itinerary-day">
+              <div class="day-number">Day 1-3</div>
+              <div class="day-title">Thimphu Capital</div>
+              <div class="day-description">
+                Arrival in Paro, drive to Thimphu, weekend market visits, and
+                monastery explorations.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 4-6</div>
+              <div class="day-title">Punakha Valley</div>
+              <div class="day-description">
+                Drive through Dochula Pass, Punakha Dzong visits, and
+                traditional village experiences.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 7-9</div>
+              <div class="day-title">Paro Exploration</div>
+              <div class="day-description">
+                Return to Paro, Tiger's Nest Monastery trek, traditional hot
+                stone bath, and cultural performances.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 10-12</div>
+              <div class="day-title">Spiritual Immersion</div>
+              <div class="day-description">
+                Meditation sessions, traditional crafts workshops, and farewell
+                ceremonies with local families.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faroe Islands -->
+        <div class="destination" id="faroe">
+          <div class="destination-content">
+            <div class="destination-image">
+              <img src="images/faroe.jpg" alt="Faroe Islands" />
+            </div>
+            <div class="destination-info">
+              <h2>Faroe Islands</h2>
+              <div class="location">North Atlantic</div>
+              <p>
+                Explore one of the world's most remote and pristine
+                destinations. The Faroe Islands offer dramatic cliffs,
+                grass-roof houses, and a unique Nordic culture untouched by mass
+                tourism.
+              </p>
+
+              <div class="price-section">
+                <h3>Starting Price</h3>
+                <div class="price">$3,900</div>
+                <div class="price-note">Per person, 8 days / 7 nights</div>
+              </div>
+
+              <div class="highlights">
+                <h4>Experience Highlights</h4>
+                <ul>
+                  <li>Remote village helicopter access</li>
+                  <li>Traditional Faroese cuisine experiences</li>
+                  <li>Puffin watching excursions</li>
+                  <li>Dramatic cliff hiking adventures</li>
+                </ul>
+              </div>
+
+              <a href="contact.html" class="book-btn">Book Now</a>
+            </div>
+          </div>
+
+          <div class="itinerary-section">
+            <h3>8-Day Itinerary</h3>
+            <div class="itinerary-day">
+              <div class="day-number">Day 1-2</div>
+              <div class="day-title">Tórshavn Discovery</div>
+              <div class="day-description">
+                Arrival in capital city, historic Tinganes peninsula, and
+                traditional Nordic architecture exploration.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 3-4</div>
+              <div class="day-title">Mykines Puffins</div>
+              <div class="day-description">
+                Helicopter transfer to Mykines island, puffin watching, and
+                remote village experiences.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 5-6</div>
+              <div class="day-title">Dramatic Landscapes</div>
+              <div class="day-description">
+                Saksun village visit, Múlafossur waterfall hike, and traditional
+                grass-roof house stays.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 7-8</div>
+              <div class="day-title">Cultural Immersion</div>
+              <div class="day-description">
+                Traditional Faroese cooking class, local music experiences, and
+                farewell dinner with island views.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Antarctica -->
+        <div class="destination" id="antarctica">
+          <div class="destination-content">
+            <div class="destination-image">
+              <img src="images/Antarctica.jpg" alt="Antarctica" />
+            </div>
+            <div class="destination-info">
+              <h2>Antarctica</h2>
+              <div class="location">The White Continent</div>
+              <p>
+                Journey to the end of the Earth on this once-in-a-lifetime
+                expedition to Antarctica. Experience pristine wilderness,
+                incredible wildlife, and the profound silence of the world's
+                last frontier.
+              </p>
+
+              <div class="price-section">
+                <h3>Starting Price</h3>
+                <div class="price">$12,500</div>
+                <div class="price-note">Per person, 14 days / 13 nights</div>
+              </div>
+
+              <div class="highlights">
+                <h4>Experience Highlights</h4>
+                <ul>
+                  <li>Luxury expedition ship accommodation</li>
+                  <li>Zodiac landings and wildlife encounters</li>
+                  <li>Professional naturalist guides</li>
+                  <li>Photography workshops with experts</li>
+                </ul>
+              </div>
+
+              <a href="contact.html" class="book-btn">Book Now</a>
+            </div>
+          </div>
+
+          <div class="itinerary-section">
+            <h3>14-Day Itinerary</h3>
+            <div class="itinerary-day">
+              <div class="day-number">Day 1-2</div>
+              <div class="day-title">Ushuaia Departure</div>
+              <div class="day-description">
+                Embarkation in Ushuaia, Argentina. Ship orientation and crossing
+                the Drake Passage.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 3-10</div>
+              <div class="day-title">Antarctic Peninsula</div>
+              <div class="day-description">
+                Daily zodiac landings, wildlife viewing, ice formations, and
+                research station visits.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 11-12</div>
+              <div class="day-title">Return Journey</div>
+              <div class="day-description">
+                Crossing Drake Passage, wildlife recap sessions, and expedition
+                photography review.
+              </div>
+            </div>
+            <div class="itinerary-day">
+              <div class="day-number">Day 13-14</div>
+              <div class="day-title">Ushuaia Return</div>
+              <div class="day-description">
+                Disembarkation, optional Patagonia extension, and departure
+                preparations.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

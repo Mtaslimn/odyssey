@@ -1,0 +1,3 @@
+ in terminal open backend directory
+ enter command : node server.js
+ then open the link :   http://localhost:5000/index.html

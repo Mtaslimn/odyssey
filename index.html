@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solitude Travels - Discover Extraordinary Journeys</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background: #ffffff;
+      }
+
+      /* Navigation */
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 1.5rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 3rem;
+      }
+
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        text-decoration: none;
+        letter-spacing: -0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 3rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #1a1a1a;
+        font-weight: 400;
+        font-size: 0.95rem;
+        letter-spacing: 0.3px;
+        transition: color 0.3s ease;
+        text-transform: uppercase;
+      }
+
+      .nav-links a:hover {
+        color: #666;
+      }
+
+      /* Hero Section */
+      .hero {
+        margin-top: 90px;
+        min-height: 85vh;
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        align-items: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 3rem;
+        gap: 4rem;
+      }
+
+      .hero-content {
+        padding-right: 2rem;
+      }
+
+      .hero-content h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 4.5rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        line-height: 1.1;
+        margin-bottom: 2rem;
+        letter-spacing: -2px;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 3rem;
+        line-height: 1.7;
+        font-weight: 300;
+      }
+
+      .hero-image {
+        position: relative;
+        height: 600px;
+        overflow: hidden;
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Booking Section */
+      .booking-section {
+        background: #f8f8f8;
+        padding: 4rem 0;
+        margin-top: 4rem;
+      }
+
+      .booking-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 3rem;
+      }
+
+      .booking-form {
+        background: #1a1a1a;
+        padding: 3rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr) auto;
+        gap: 2rem;
+        align-items: end;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-group label {
+        color: #ffffff;
+        font-weight: 500;
+        margin-bottom: 0.8rem;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .form-group input {
+        padding: 1rem;
+        border: 1px solid #333;
+        background: #2a2a2a;
+        color: #ffffff;
+        font-size: 1rem;
+        font-family: "Inter", sans-serif;
+      }
+
+      .form-group input::placeholder {
+        color: #888;
+      }
+
+      .book-btn {
+        background: #ffffff;
+        color: #1a1a1a;
+        border: none;
+        padding: 1rem 2.5rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .book-btn:hover {
+        background: #f0f0f0;
+      }
+
+      /* Destinations Section */
+      .destinations {
+        padding: 6rem 0;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-left: 3rem;
+        padding-right: 3rem;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-header h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+      }
+
+      .section-header p {
+        font-size: 1.1rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+        font-weight: 300;
+      }
+
+      .destinations-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .destinations-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .destination-card {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.4s ease;
+      }
+
+      .destination-card:hover {
+        transform: scale(1.02);
+      }
+
+      .destination-card.large {
+        grid-row: span 2;
+      }
+
+      .destination-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        min-height: 300px;
+      }
+
+      .destination-card.large img {
+        min-height: 620px;
+      }
+
+      .card-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        padding: 2rem;
+        color: white;
+      }
+
+      .card-overlay h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .card-overlay p {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        font-weight: 300;
+      }
+
+      /* Services Section */
+      .services {
+        background: #f8f8f8;
+        padding: 6rem 0;
+      }
+
+      .services-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 3rem;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+        margin-top: 4rem;
+      }
+
+      .service-item {
+        text-align: left;
+      }
+
+      .service-item h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        color: #1a1a1a;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .service-item p {
+        color: #666;
+        line-height: 1.7;
+        font-weight: 300;
+      }
+
+      /* Footer */
+      .footer {
+        background: #1a1a1a;
+        color: #ffffff;
+        padding: 4rem 0 2rem;
+      }
+
+      .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 3rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
+      }
+
+      .footer-section h3 {
+        font-family: "Playfair Display", serif;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+      }
+
+      .footer-section p,
+      .footer-section a {
+        color: #ccc;
+        text-decoration: none;
+        line-height: 1.8;
+        font-weight: 300;
+      }
+
+      .footer-section a:hover {
+        color: #ffffff;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #333;
+        color: #888;
+        font-weight: 300;
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 1024px) {
+        .hero {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 2rem;
+        }
+
+        .hero-content h1 {
+          font-size: 3.5rem;
+        }
+
+        .booking-form {
+          grid-template-columns: 1fr;
+        }
+
+        .destinations-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .destinations-row {
+          grid-template-columns: 1fr;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .nav-container,
+        .booking-container,
+        .destinations,
+        .services-container,
+        .footer-container {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+
+        .hero-content h1 {
+          font-size: 2.8rem;
+        }
+
+        .section-header h2 {
+          font-size: 2.2rem;
+        }
+
+        .footer-container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .destination-card {
+        text-decoration: none;
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="logo">Odyssey</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="#services">Services</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Discover Extraordinary Journeys</h1>
+        <p>
+          We craft bespoke travel experiences that transcend the ordinary. From
+          remote mountain peaks to hidden cultural gems, let us guide you to
+          places that will transform your perspective on the world.
+        </p>
+      </div>
+      <div class="hero-image">
+        <img src="images/hero-mountain.jpg" alt="Mountain landscape" />
+      </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+      <div class="booking-container">
+        <form class="booking-form">
+          <div class="form-group">
+            <label for="destination">Destination</label>
+            <input type="text" id="destination" placeholder="Where to?" />
+          </div>
+          <div class="form-group">
+            <label for="checkin">Departure</label>
+            <input type="date" id="checkin" />
+          </div>
+          <div class="form-group">
+            <label for="checkout">Return</label>
+            <input type="date" id="checkout" />
+          </div>
+          <div class="form-group">
+            <label for="guests">Travelers</label>
+            <input type="number" id="guests" min="1" placeholder="2" />
+          </div>
+          <button type="submit" class="book-btn">Search</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="destinations" id="destinations">
+      <div class="section-header">
+        <h2>Featured Destinations</h2>
+        <p>
+          Carefully curated experiences in the world's most captivating
+          locations
+        </p>
+      </div>
+
+      <div class="destinations-grid">
+        <a href="destinations.html#santorini" class="destination-card large">
+          <img src="images/santorini.jpg" alt="Santorini, Greece" />
+          <div class="card-overlay">
+            <h3>Santorini</h3>
+            <p>Cycladic elegance meets volcanic drama</p>
+          </div>
+        </a>
+        <a href="destinations.html#bali" class="destination-card">
+          <img src="images/bali-temple.jpg" alt="Bali, Indonesia" />
+          <div class="card-overlay">
+            <h3>Bali</h3>
+            <p>Spiritual awakening in paradise</p>
+          </div>
+        </a>
+        <a href="destinations.html#swiss-alps" class="destination-card">
+          <img src="images/swiss-alps.jpg" alt="Swiss Alps" />
+          <div class="card-overlay">
+            <h3>Swiss Alps</h3>
+            <p>Alpine perfection redefined</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="destinations-row">
+        <a href="destinations.html#maldives" class="destination-card">
+          <img src="images/maldives.jpg" alt="Maldives" />
+          <div class="card-overlay">
+            <h3>Maldives</h3>
+            <p>Overwater serenity</p>
+          </div>
+        </a>
+        <a href="destinations.html#tokyo" class="destination-card">
+          <img src="images/tokyo.jpg" alt="Tokyo, Japan" />
+          <div class="card-overlay">
+            <h3>Tokyo</h3>
+            <p>Where tradition meets innovation</p>
+          </div>
+        </a>
+        <a href="destinations.html#iceland" class="destination-card">
+          <img src="images/iceland.jpg" alt="Iceland" />
+          <div class="card-overlay">
+            <h3>Iceland</h3>
+            <p>Land of fire and ice</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+      <div class="services-container">
+        <div class="section-header">
+          <h2>Why Choose Odyssey</h2>
+          <p>
+            We believe in creating transformative experiences, not just trips
+          </p>
+        </div>
+        <div class="services-grid">
+          <div class="service-item">
+            <h3>Bespoke Itineraries</h3>
+            <p>
+              Every journey is meticulously crafted to match your personal
+              interests, pace, and style. No two experiences are ever the same.
+            </p>
+          </div>
+          <div class="service-item">
+            <h3>Local Expertise</h3>
+            <p>
+              Our network of local guides and partners provides authentic
+              insights that transform destinations from places to visit into
+              stories to live.
+            </p>
+          </div>
+          <div class="service-item">
+            <h3>Seamless Experience</h3>
+            <p>
+              From the moment you inquire to your return home, every detail is
+              handled with precision, allowing you to focus on the journey
+              itself.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>Odyssey Travels</h3>
+          <p>
+            Creating extraordinary journeys for discerning travelers who seek
+            authentic experiences beyond the ordinary.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Destinations</h3>
+          <p><a href="#">Europe</a></p>
+          <p><a href="#">Asia</a></p>
+          <p><a href="#">Americas</a></p>
+          <p><a href="#">Africa</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Services</h3>
+          <p><a href="#">Bespoke Travel</a></p>
+          <p><a href="#">Group Journeys</a></p>
+          <p><a href="#">Cultural Immersion</a></p>
+          <p><a href="#">Adventure Travel</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>hello@Odyssey.com</p>
+          <p>+1 (555) 123-4567</p>
+          <p>New York, NY</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Odyssey Travels. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

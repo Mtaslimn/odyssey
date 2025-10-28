@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Solitude Travels</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background: #ffffff;
+      }
+
+      /* Navigation */
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 1.5rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 3rem;
+      }
+
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        text-decoration: none;
+        letter-spacing: -0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 3rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #1a1a1a;
+        font-weight: 400;
+        font-size: 0.95rem;
+        letter-spacing: 0.3px;
+        transition: color 0.3s ease;
+        text-transform: uppercase;
+      }
+
+      .nav-links a:hover {
+        color: #666;
+      }
+
+      /* About Section */
+      .about-section {
+        margin-top: 120px;
+        padding: 4rem 0;
+      }
+
+      .about-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 3rem;
+      }
+
+      .about-header {
+        margin-bottom: 6rem;
+      }
+
+      .about-header .breadcrumb {
+        font-size: 0.9rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+      }
+
+      .about-header h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 4rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        letter-spacing: -2px;
+        margin-bottom: 2rem;
+      }
+
+      .about-header p {
+        font-size: 1.3rem;
+        color: #666;
+        max-width: 800px;
+        font-weight: 300;
+        line-height: 1.7;
+      }
+
+      .story-section {
+        margin-bottom: 8rem;
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 6rem;
+        align-items: center;
+      }
+
+      .story-content h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        color: #1a1a1a;
+        margin-bottom: 2rem;
+        font-weight: 600;
+        letter-spacing: -1px;
+      }
+
+      .story-content p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 1.8rem;
+        font-weight: 300;
+        line-height: 1.8;
+      }
+
+      .story-image {
+        overflow: hidden;
+      }
+
+      .story-image img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+      }
+
+      .stats-section {
+        background: #f8f8f8;
+        padding: 6rem 0;
+        margin: 6rem 0;
+      }
+
+      .stats-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 3rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4rem;
+        text-align: center;
+      }
+
+      .stat-item h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 3.5rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-item p {
+        font-size: 0.9rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 500;
+      }
+
+      .testimonial-section {
+        margin: 8rem 0;
+      }
+
+      .testimonial {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+        align-items: center;
+        margin-bottom: 8rem;
+      }
+
+      .testimonial:nth-child(even) {
+        direction: rtl;
+      }
+
+      .testimonial:nth-child(even) > * {
+        direction: ltr;
+      }
+
+      .testimonial-content h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        color: #1a1a1a;
+        margin-bottom: 2rem;
+        font-weight: 600;
+      }
+
+      .testimonial-text {
+        font-size: 1.2rem;
+        color: #666;
+        font-style: italic;
+        margin-bottom: 2rem;
+        line-height: 1.8;
+        font-weight: 300;
+      }
+
+      .testimonial-author {
+        border-top: 1px solid #e0e0e0;
+        padding-top: 1.5rem;
+      }
+
+      .testimonial-author h4 {
+        color: #1a1a1a;
+        margin-bottom: 0.3rem;
+        font-weight: 600;
+      }
+
+      .testimonial-author p {
+        color: #999;
+        font-size: 0.9rem;
+        font-weight: 300;
+      }
+
+      .testimonial-image {
+        overflow: hidden;
+      }
+
+      .testimonial-image img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+      }
+
+      .destinations-section {
+        background: #f8f8f8;
+        padding: 6rem 0;
+        margin-top: 6rem;
+      }
+
+      .destinations-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 3rem;
+        text-align: center;
+      }
+
+      .destinations-container h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        color: #1a1a1a;
+        margin-bottom: 2rem;
+        font-weight: 600;
+      }
+
+      .destinations-container p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 4rem;
+        font-weight: 300;
+      }
+
+      .destinations-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+        margin-top: 4rem;
+      }
+
+      .destination-item {
+        text-align: left;
+      }
+
+      .destination-item h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        color: #1a1a1a;
+        margin-bottom: 0.8rem;
+        font-weight: 600;
+      }
+
+      .destination-item p {
+        color: #666;
+        font-size: 0.95rem;
+        font-weight: 300;
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 1024px) {
+        .story-section,
+        .testimonial {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+
+        .stats-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .destinations-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .about-header h1 {
+          font-size: 3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .nav-container,
+        .about-container,
+        .stats-container,
+        .destinations-container {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+
+        .about-header h1 {
+          font-size: 2.5rem;
+        }
+
+        .stats-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .story-content h2,
+        .testimonial-content h3 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">Odyssey</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html#destinations">Destinations</a></li>
+          <li><a href="index.html#services">Services</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-section">
+      <div class="about-container">
+        <div class="about-header">
+          <div class="breadcrumb">ABOUT</div>
+          <h1>Our Story</h1>
+          <p>
+            Founded on the belief that travel should transform rather than
+            simply transport, Odyssey Travels has been crafting extraordinary
+            journeys for discerning travelers since 2014.
+          </p>
+        </div>
+
+        <div class="story-section">
+          <div class="story-content">
+            <h2>Beyond the Ordinary</h2>
+            <p>
+              What began as a passion project between two travel enthusiasts has
+              evolved into a boutique agency that specializes in creating
+              transformative experiences for those who seek more than just a
+              vacation.
+            </p>
+            <p>
+              Based in New York City, we work with a carefully curated network
+              of local partners around the world to ensure that every journey we
+              craft offers authentic insights into the places and cultures
+              you'll encounter.
+            </p>
+            <p>
+              We believe that the best travel experiences happen when you step
+              away from the crowds and discover the soul of a destination.
+            </p>
+          </div>
+          <div class="story-image">
+            <img src="images/office-team.jpg" alt="Our team at work" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section">
+      <div class="stats-container">
+        <div class="stat-item">
+          <h3>10+</h3>
+          <p>Years of Experience</p>
+        </div>
+        <div class="stat-item">
+          <h3>2,500+</h3>
+          <p>Journeys Crafted</p>
+        </div>
+        <div class="stat-item">
+          <h3>65+</h3>
+          <p>Countries Explored</p>
+        </div>
+        <div class="stat-item">
+          <h3>98%</h3>
+          <p>Client Satisfaction</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-container">
+      <div class="testimonial-section">
+        <div class="testimonial">
+          <div class="testimonial-content">
+            <h3>A Journey That Changed Everything</h3>
+            <p class="testimonial-text">
+              "Our three-week journey through Japan wasn't just a vacation—it
+              was a complete immersion into a culture that fascinated us. From
+              private tea ceremonies in Kyoto to hiking remote mountain trails,
+              every moment was thoughtfully curated. The attention to detail and
+              local connections made this trip truly transformative."
+            </p>
+            <div class="testimonial-author">
+              <h4>Sarah & Michael Chen</h4>
+              <p>Cultural Immersion Journey • Japan • Spring 2024</p>
+            </div>
+          </div>
+          <div class="testimonial-image">
+            <img src="images/tokyo.jpg" alt="Japan journey" />
+          </div>
+        </div>
+
+        <div class="testimonial">
+          <div class="testimonial-content">
+            <h3>Patagonia: Raw Beauty Unveiled</h3>
+            <p class="testimonial-text">
+              "As photographers, we needed access to locations that most
+              tourists never see. Odyssey Travels arranged private guides who
+              took us to hidden glacial lakes and remote peaks at the perfect
+              times for golden hour shots. The logistics were flawless, allowing
+              us to focus entirely on our craft."
+            </p>
+            <div class="testimonial-author">
+              <h4>David Rodriguez</h4>
+              <p>Photography Expedition • Patagonia • February 2024</p>
+            </div>
+          </div>
+          <div class="testimonial-image">
+            <img src="images/patagonia.jpg" alt="Patagonia expedition" />
+          </div>
+        </div>
+
+        <div class="testimonial">
+          <div class="testimonial-content">
+            <h3>Iceland: Land of Fire and Ice</h3>
+            <p class="testimonial-text">
+              "Our honeymoon in Iceland exceeded every expectation. From private
+              Northern Lights viewing to exclusive access to geothermal springs,
+              every detail was perfect. The small group size and expert local
+              guides made us feel like we were discovering Iceland's secrets
+              rather than following a tourist trail."
+            </p>
+            <div class="testimonial-author">
+              <h4>Emma & James Wilson</h4>
+              <p>Honeymoon Adventure • Iceland • November 2023</p>
+            </div>
+          </div>
+          <div class="testimonial-image">
+            <img src="images/iceland.jpg" alt="Iceland honeymoon" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="destinations-section">
+      <div class="destinations-container">
+        <h2>Where We Take You</h2>
+        <p>
+          From remote wilderness to cultural capitals, we specialize in
+          destinations that offer authentic experiences away from the crowds.
+        </p>
+
+        <div class="destinations-grid">
+          <div class="destination-item">
+            <h3>Nordic Wilderness</h3>
+            <p>
+              Iceland, Norway, Finland - Experience the raw beauty of the North
+              through private lodges and expert local guides.
+            </p>
+          </div>
+          <div class="destination-item">
+            <h3>Asian Immersion</h3>
+            <p>
+              Japan, Bhutan, Myanmar - Deep cultural experiences that go beyond
+              the surface of these fascinating societies.
+            </p>
+          </div>
+          <div class="destination-item">
+            <h3>Remote Islands</h3>
+            <p>
+              Faroe Islands, Azores, Tasmania - Discover pristine landscapes and
+              unique cultures on the world's most beautiful islands.
+            </p>
+          </div>
+          <div class="destination-item">
+            <h3>Mountain Expeditions</h3>
+            <p>
+              Patagonia, Himalayas, Dolomites - Challenge yourself in some of
+              the world's most spectacular mountain ranges.
+            </p>
+          </div>
+          <div class="destination-item">
+            <h3>Desert Journeys</h3>
+            <p>
+              Sahara, Atacama, Gobi - Experience the profound silence and beauty
+              of the world's great deserts.
+            </p>
+          </div>
+          <div class="destination-item">
+            <h3>Polar Regions</h3>
+            <p>
+              Antarctica, Arctic - Witness the planet's last great wildernesses
+              through small-ship expeditions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
